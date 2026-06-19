@@ -155,8 +155,10 @@
     .ca-md__x{width:38px;height:38px;border-radius:50%;background:var(--ca-linen);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ca-gray);transition:var(--tr)}
     .ca-md__x:hover{background:var(--ca-sand);color:var(--ca-ink)}
     .ca-md__gal{padding:0 28px;margin-top:-8px}
-    .ca-md__hero{position:relative;border-radius:var(--r-md);overflow:hidden;height:340px;margin-bottom:10px}
-    .ca-md__hero img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .ca-md__hero{position:relative;border-radius:var(--r-md);overflow:hidden;margin-bottom:10px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;min-height:260px;max-height:560px;}
+    .ca-md__hero img{width:100%;height:auto;max-height:560px;object-fit:contain;transition:transform .5s;filter:blur(0);}
+    .ca-md__hero::before{content:'';position:absolute;inset:0;background-image:inherit;background-size:cover;background-position:center;filter:blur(20px);opacity:0.5;z-index:0;transform:scale(1.1);}
+    .ca-md__hero img{position:relative;z-index:1;}
     .ca-md__hero:hover img{transform:scale(1.03)}
     .ca-md__nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;pointer-events:none}
     .ca-md__nav button{pointer-events:all;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ca-ink);box-shadow:0 2px 12px rgba(0,0,0,.15);transition:var(--tr)}
