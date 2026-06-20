@@ -51,7 +51,7 @@
     .ca-nav__logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;font-style:normal;letter-spacing:0.06em;color:#fff;transition:color .4s}
     .ca-nav.sc .ca-nav__logo{color:var(--ca-azure)}
     .ca-nav__links{display:flex;list-style:none;gap:32px}
-    .ca-nav__links a{font-size:20px;font-weight:500;color:rgba(255,255,255,.88);transition:color .3s}
+    .ca-nav__links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.88);transition:color .3s}
     .ca-nav__links a:hover{color:var(--ca-sky)}
     .ca-nav.sc .ca-nav__links a{color:var(--ca-gray)}
     .ca-nav.sc .ca-nav__links a:hover{color:var(--ca-azure)}
@@ -180,7 +180,12 @@
     .ca-md__div{height:1px;background:var(--ca-sand);margin:20px 0}
     .ca-md__dtit{font-family:var(--ff-display);font-size:20px;font-weight:500;margin-bottom:12px}
     .ca-md__desc{font-size:15px;line-height:1.8;color:var(--ca-gray)}
-    .ca-md__cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .ca-md__cta{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .ca-md__iconbtn{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:var(--tr);flex-shrink:0;border:none;cursor:pointer;overflow:hidden;padding:10px}
+    .ca-md__iconbtn--booking{background:#003580;color:#fff}
+    .ca-md__iconbtn--booking:hover{background:#00286b;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,53,128,.4)}
+    .ca-md__iconbtn--airbnb{background:#FF5A5F;color:#fff}
+    .ca-md__iconbtn--airbnb:hover{background:#e04e53;transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,90,95,.4)}
 
     /* --- SERVICES --- */
     .ca-svcs{padding:112px 0;background:#fff}
@@ -322,6 +327,12 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span id="caMdEmail">Enviar email</span>
         </a>
+        <a href="#" id="caMdBooking" target="_blank" rel="noopener noreferrer" class="ca-md__iconbtn ca-md__iconbtn--booking" aria-label="Ver en Booking.com" title="Ver en Booking.com">
+          <img src="https://www.google.com/s2/favicons?domain=booking.com&sz=64" alt="Booking.com" style="width:28px;height:28px;object-fit:contain"/>
+        </a>
+        <a href="#" id="caMdAirbnb" target="_blank" rel="noopener noreferrer" class="ca-md__iconbtn ca-md__iconbtn--airbnb" aria-label="Ver en Airbnb" title="Ver en Airbnb">
+          <img src="https://www.google.com/s2/favicons?domain=airbnb.com&sz=64" alt="Airbnb" style="width:28px;height:28px;object-fit:contain"/>
+        </a>
       </div>
     </div>
   </div>
@@ -404,8 +415,8 @@
       <div class="ca-about__tx ca-rev d1">
         <span class="ca-eye" data-es="Sobre nosotras" data-en="About us">Sobre nosotras</span>
         <h2 class="ca-h2"><span data-es="Un equipo local <em>apasionado</em> por España" data-en="A local team <em>passionate</em> about Spain">Un equipo local <em>apasionado</em> por España</span></h2>
-        <p class="ca-p" data-es="Casa Amiga es una empresa de alquiler vacacional y gestión de propiedades fundada por dos amigas, Karolina y Bárbara, enamoradas de cada rincón de la Costa Tropical. Nos encanta compartir nuestras recomendaciones para que disfrutéis al máximo de vuestra estancia, desde los lugares imprescindibles que visitar hasta los mejores restaurantes, playas, rutas y planes según vuestros gustos."  data-en="Casa Amiga is a vacation rental and property management company founded by two friends, Karolina and Bárbara, who are passionate about every corner of the Tropical Coast. We love sharing our local recommendations to help you make the most of your stay, from must-visit attractions to the best restaurants, beaches, hiking trails, and activities tailored to your interests."></p>
-        <p class="ca-p" data-es="Nuestro compromiso es que os sintáis como en casa desde el primer momento, con alojamientos muy especiales preparados con esmero y un servicio de confianza que os permita dedicaros únicamente a disfrutar. Será un placer ayudaros a descubrir la zona como lo haría alguien que vive aquí y la conoce de verdad." data-en="Our commitment is to make you feel at home from the very first moment, with carefully curated accommodations and a reliable, personalized service, so you can simply relax and enjoy your stay. It will be our pleasure to help you discover the area just as a local would—someone who truly knows and loves it."></p>
+        <p class="ca-p" data-es="Casa Amiga es una empresa de alquiler vacacional y gestión de propiedades fundada por dos amigas, Karolina y Bárbara, enamoradas de cada rincón de la Costa Tropical. Nos encanta compartir nuestras recomendaciones para que disfrutéis al máximo de vuestra estancia, desde los lugares imprescindibles que visitar hasta los mejores restaurantes, playas, rutas y planes según vuestros gustos."  data-en="Casa Amiga is a vacation rental and property management company founded by two friends, Karolina and Bárbara, who are passionate about every corner of the Tropical Coast. We love sharing our local recommendations to help you make the most of your stay, from must-visit attractions to the best restaurants, beaches, hiking trails, and activities tailored to your interests.">
+        <p class="ca-p" data-es="Nuestro compromiso es que os sintáis como en casa desde el primer momento, con alojamientos muy especiales preparados con esmero y un servicio de confianza que os permita dedicaros únicamente a disfrutar. Será un placer ayudaros a descubrir la zona como lo haría alguien que vive aquí y la conoce de verdad." data-en="Our commitment is to make you feel at home from the very first moment, with carefully curated accommodations and a reliable, personalized service, so you can simply relax and enjoy your stay. It will be our pleasure to help you discover the area just as a local would—someone who truly knows and loves it.">
         <p class="ca-p" data-es="Vuestra tranquilidad y satisfacción son nuestra mayor prioridad. Os esperamos con los brazos abiertos." data-en="Your comfort and satisfaction are our top priorities. We look forward to giving you a warm welcome."</p>
         <p class="ca-p" data-es="Nuestros años en España nos brindan una experiencia local inigualable. Poseemos un conocimiento profundo de las particularidades de la zona, las regulaciones locales y las mejores formas de atraer clientes. Como residentes locales, siempre estamos cerca para abordar cualquier problema de manera rápida y personal." data-en="Our years in Spain give us unmatched local expertise. We have deep knowledge of the area, local regulations and the best ways to attract guests. As local residents, we are always nearby to address any issue quickly and personally.">Nuestros años en España nos brindan una experiencia local inigualable. Poseemos un conocimiento profundo de las particularidades de la zona, las regulaciones locales y las mejores formas de atraer clientes. Como residentes locales, siempre estamos cerca para abordar cualquier problema de manera rápida y personal.</p>
         <div class="ca-about__f">
@@ -445,7 +456,7 @@
             </div>
             <button class="ca-pc__btn ca-obtn" data-apt="0"><span data-es="Más información" data-en="More info">Más información</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
-        </div>
+</div>
       </article>
 
       <article class="ca-pc ca-rev d1" data-apt="1">
@@ -460,7 +471,7 @@
             </div>
             <button class="ca-pc__btn ca-obtn" data-apt="1"><span data-es="Más información" data-en="More info">Más información</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
-        </div>
+</div>
       </article>
 
       <article class="ca-pc ca-rev d1" data-apt="2">
@@ -475,7 +486,7 @@
             </div>
             <button class="ca-pc__btn ca-obtn" data-apt="2"><span data-es="Más información" data-en="More info">Más información</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
-        </div>
+</div>
       </article>
 
       <article class="ca-pc ca-rev d2" data-apt="3">
@@ -490,7 +501,7 @@
             </div>
             <button class="ca-pc__btn ca-obtn" data-apt="3"><span data-es="Más información" data-en="More info">Más información</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
-        </div>
+</div>
       </article>
 
       <article class="ca-pc ca-rev d2" data-apt="4">
@@ -505,7 +516,7 @@
             </div>
             <button class="ca-pc__btn ca-obtn" data-apt="4"><span data-es="Más información" data-en="More info">Más información</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
-        </div>
+</div>
       </article>
     </div>
   </div>
@@ -644,22 +655,27 @@
     { name:{es:'Apartment Barbarita',en:'Apartment Barbarita'}, loc:{es:'La Herradura, Costa Tropical, Granada',en:'La Herradura, Costa Tropical, Granada'}, beds:3, guests:5,
       desc:{es:'Una villa de ensueño con vistas panorámicas al Mediterráneo. Rodeada de jardines tropicales, con terraza privada y zona de barbacoa, es el refugio perfecto para grupos familiares o de amigos que buscan espacio, privacidad y la brisa del mar a pocos metros. Sus 4 dormitorios están decorados con materiales naturales y tonos blancos que invitan al descanso.',
             en:'A dream villa with panoramic views of the Mediterranean. Surrounded by tropical gardens, with a private terrace and barbecue area, it is the perfect retreat for family or friend groups looking for space, privacy and the sea breeze just metres away. Its 4 bedrooms are decorated with natural materials and white tones that invite rest.'},
+      booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
       photos:['https://martinzafra.github.io/ca/images/AptBarbarita/A.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/B.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/C.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/D.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/E.JPG']},
     { name:{es:'Apartamento Sol Blanco',en:'Apartamento Sol Blanco'}, loc:{es:'Frigiliana, Málaga',en:'Frigiliana, Málaga'}, beds:2, guests:4,
       desc:{es:'En el corazón de Frigiliana, uno de los pueblos más bonitos de España, este apartamento de 2 dormitorios combina el encanto árabe de las calles empedradas con interiores modernos y luminosos. Desde su terraza se disfruta de unas vistas únicas sobre los tejados blancos del pueblo y la sierra al fondo.',
             en:'In the heart of Frigiliana, one of the most beautiful villages in Spain, this 2-bedroom apartment combines the Arabic charm of cobbled streets with modern, light-filled interiors. From its terrace you can enjoy unique views over the white rooftops of the village and the mountains beyond.'},
+      booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
       photos:['https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=900&q=80&auto=format','https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=900&q=80&auto=format','https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80&auto=format']},
     { name:{es:'Casa Patio Azul',en:'Casa Patio Azul'}, loc:{es:'Nerja, Málaga',en:'Nerja, Málaga'}, beds:3, guests:6,
       desc:{es:'Una casa tradicional andaluza renovada con mimo, organizada alrededor de un patio central con fuente y macetas de geranios. Sus azulejos azules y blancos, arcos moriscos y materiales artesanales crean una atmósfera auténticamente mediterránea. A 10 minutos a pie del famoso Balcón de Europa y las playas de Nerja.',
             en:'A lovingly restored traditional Andalusian house, arranged around a central courtyard with a fountain and geranium pots. Its blue and white tiles, Moorish arches and artisan materials create an authentically Mediterranean atmosphere. A 10-minute walk from the famous Balcón de Europa and Nerja beaches.'},
+      booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
       photos:['https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format','https://images.unsplash.com/photo-1499678329028-101435549a4e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=900&q=80&auto=format']},
     { name:{es:'Rincón del Mediterráneo',en:'Rincón del Mediterráneo'}, loc:{es:'Almuñécar, Granada',en:'Almuñécar, Granada'}, beds:2, guests:4,
       desc:{es:'Apartamento moderno y luminoso a 5 minutos andando de la playa de Puerta del Mar. Con 2 dormitorios, terraza con vistas parciales al mar y una decoración que mezcla lo contemporáneo con los detalles artesanales de la zona. Ideal para parejas o familias pequeñas que buscan tranquilidad y mar.',
             en:'A modern, light-filled apartment a 5-minute walk from Puerta del Mar beach. With 2 bedrooms, a terrace with partial sea views and décor that blends contemporary style with local artisan details. Ideal for couples or small families looking for peace and sea.'},
+      booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
       photos:['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80&auto=format','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format','https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format']},
     { name:{es:'Cortijo La Caleta',en:'Cortijo La Caleta'}, loc:{es:'Salobreña, Granada',en:'Salobreña, Granada'}, beds:5, guests:10,
       desc:{es:'Cortijo andaluz de 120 m² con piscina privada, jardín con limoneros y vistas a la roca de Salobreña y al Mediterráneo. Con 5 dormitorios y capacidad para 10 personas, es la elección perfecta para grupos grandes, reuniones familiares o escapadas especiales. Cada rincón respira la tradición de la Andalucía rural.',
             en:'A 120 m² Andalusian farmhouse with private pool, lemon tree garden and views of the Salobreña rock and the Mediterranean. With 5 bedrooms and capacity for 10 people, it is the perfect choice for large groups, family gatherings or special getaways. Every corner breathes the tradition of rural Andalusia.'},
+      booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
       photos:['https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80&auto=format','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&auto=format','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&q=80&auto=format']}
   ];
 
@@ -734,6 +750,8 @@
     curPh=0; mhero.src=a.photos[0]; mhero.alt=a.name[lang]; mcnt.textContent='1 / '+a.photos.length;
     mo.classList.add('on'); document.body.style.overflow='hidden';
     document.getElementById('caMd').scrollTop=0;
+    document.getElementById('caMdBooking').href = a.booking;
+    document.getElementById('caMdAirbnb').href = a.airbnb;
   }
 
   function closeModal(){ mo.classList.remove('on'); document.body.style.overflow=''; }
