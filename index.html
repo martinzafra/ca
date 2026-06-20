@@ -190,6 +190,15 @@
     .ca-md__dtit{font-family:var(--ff-display);font-size:22px;font-weight:500;margin-bottom:12px}
     .ca-md__desc{font-size:17px;line-height:1.8;color:var(--ca-gray)}
     .ca-md__cta{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .ca-md__video-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:100px;background:var(--ca-azure);color:#fff;font-family:var(--ff-display);font-size:17px;font-weight:500;border:none;cursor:pointer;transition:var(--tr);text-decoration:none;margin-top:16px;width:100%;justify-content:center;}
+    .ca-md__video-btn:hover{background:#085a85;transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,106,154,.3)}
+    .ca-md__video-btn svg{flex-shrink:0}
+    .ca-md__video-wrap{padding:0 28px 8px;}
+    .ca-md__video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:600;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+    .ca-md__video-overlay.on{opacity:1;pointer-events:all}
+    .ca-md__video-inner{position:relative;width:90vw;max-width:900px;}
+    .ca-md__video-inner video{width:100%;border-radius:12px;display:block;}
+    .ca-md__video-close{position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;padding:8px;line-height:1;}
     .ca-md__iconbtn{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:var(--tr);flex-shrink:0;border:none;cursor:pointer;overflow:hidden;padding:10px}
     .ca-md__iconbtn--booking{background:#003580;color:#fff}
     .ca-md__iconbtn--booking:hover{background:#00286b;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,53,128,.4)}
@@ -315,6 +324,12 @@
         <span class="ca-md__cnt" id="caMdCnt">1 / 5</span>
       </div>
       <div class="ca-md__thumbs" id="caMdThumbs"></div>
+    </div>
+    <div class="ca-md__video-wrap">
+      <button class="ca-md__video-btn" id="caMdVideoBtn" aria-label="Ver vídeo del apartamento">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+        <span id="caMdVideoBtnTxt">Ver vídeo del apartamento</span>
+      </button>
     </div>
     <div class="ca-md__body">
       <div class="ca-md__hd">
@@ -717,26 +732,31 @@
       desc:{es:'Situado en el corazón de Marina del Este, en La Herradura, Barbarita es un apartamento de dos dormitorios y dos baños vestido con materiales naturales —madera, piedra, textiles cálidos— que transmiten una calma profunda desde el primer instante. Su amplia terraza con vistas abiertas al Mediterráneo y al puerto deportivo es el alma del espacio: el lugar donde tomar el primer café mientras el amanecer pinta el mar de dorado, y donde las noches se alargan sin querer entre la brisa y el murmullo del agua. Totalmente equipado, con la playa a tan solo 8 minutos a pie, piscina y fácil aparcamiento, todo está pensado para que tu única preocupación sea disfrutar.',
             en:'Located in the heart of Marina del Este, in La Herradura, Barbarita is a two-bedroom, two-bathroom apartment designed with natural materials—wood, stone, and warm textiles—that create a deep sense of calm from the very first moment. Its spacious terrace, with uninterrupted views of the Mediterranean and the marina, is the soul of the home: the perfect place to enjoy your first coffee as the sunrise bathes the sea in golden light, and where evenings effortlessly stretch on, accompanied by the sea breeze and the gentle sound of the water. Fully equipped, with the beach just an 8-minute walk away, a swimming pool, and easy parking, every detail has been thoughtfully considered so your only concern is simply enjoying your stay.'},
       booking:'https://www.booking.com/hotel/es/apartment-barbarita-marina-del-este.html?aid=356980&label=gog235jc-10CAsoRkIjYXBhcnRtZW50LWJhcmJhcml0YS1tYXJpbmEtZGVsLWVzdGVIUlgDaDOIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Asfc19EGwAIB0gIkMGY5Njc4NWMtN2Q2OS00MGJhLThiMTctZjljYTY0MTVjYmYz2AIB4AIB&sid=5b3abfd318ed9f891495e11c812046cd&dest_id=-387165&dest_type=city&group_adults=2&hapos=1&hpos=1&no_rooms=1&req_adults=2&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1781919309&srpvid=1ef90b24ee3e04d1&type=total&ucfs=1&lang=en-us&soz=1&lang_changed=1&logged_out=1',airbnb:'https://www.airbnb.com',
+      video:{es:'https://martinzafra.github.io/ca/videos/barbarita-es.mp4',en:'https://martinzafra.github.io/ca/videos/barbarita-en.mp4',pl:'https://martinzafra.github.io/ca/videos/barbarita-pl.mp4'},
       photos:['https://martinzafra.github.io/ca/images/AptBarbarita/A.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/B.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/C.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/D.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/E.JPG']},
     { name:{es:'Apartamento Sol Blanco',en:'Apartamento Sol Blanco'}, loc:{es:'Frigiliana, Málaga',en:'Frigiliana, Málaga'}, beds:2, guests:4,
       desc:{es:'En el corazón de Frigiliana, uno de los pueblos más bonitos de España, este apartamento de 2 dormitorios combina el encanto árabe de las calles empedradas con interiores modernos y luminosos. Desde su terraza se disfruta de unas vistas únicas sobre los tejados blancos del pueblo y la sierra al fondo.',
             en:'In the heart of Frigiliana, one of the most beautiful villages in Spain, this 2-bedroom apartment combines the Arabic charm of cobbled streets with modern, light-filled interiors. From its terrace you can enjoy unique views over the white rooftops of the village and the mountains beyond.'},
       booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
+      video:{es:'https://martinzafra.github.io/ca/videos/sol-blanco-es.mp4',en:'https://martinzafra.github.io/ca/videos/sol-blanco-en.mp4',pl:'https://martinzafra.github.io/ca/videos/sol-blanco-pl.mp4'},
       photos:['https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=900&q=80&auto=format','https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=900&q=80&auto=format','https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80&auto=format']},
     { name:{es:'Casa Patio Azul',en:'Casa Patio Azul'}, loc:{es:'Nerja, Málaga',en:'Nerja, Málaga'}, beds:3, guests:6,
       desc:{es:'Una casa tradicional andaluza renovada con mimo, organizada alrededor de un patio central con fuente y macetas de geranios. Sus azulejos azules y blancos, arcos moriscos y materiales artesanales crean una atmósfera auténticamente mediterránea. A 10 minutos a pie del famoso Balcón de Europa y las playas de Nerja.',
             en:'A lovingly restored traditional Andalusian house, arranged around a central courtyard with a fountain and geranium pots. Its blue and white tiles, Moorish arches and artisan materials create an authentically Mediterranean atmosphere. A 10-minute walk from the famous Balcón de Europa and Nerja beaches.'},
       booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
+      video:{es:'https://martinzafra.github.io/ca/videos/patio-azul-es.mp4',en:'https://martinzafra.github.io/ca/videos/patio-azul-en.mp4',pl:'https://martinzafra.github.io/ca/videos/patio-azul-pl.mp4'},
       photos:['https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format','https://images.unsplash.com/photo-1499678329028-101435549a4e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=900&q=80&auto=format']},
     { name:{es:'Rincón del Mediterráneo',en:'Rincón del Mediterráneo'}, loc:{es:'Almuñécar, Granada',en:'Almuñécar, Granada'}, beds:2, guests:4,
       desc:{es:'Apartamento moderno y luminoso a 5 minutos andando de la playa de Puerta del Mar. Con 2 dormitorios, terraza con vistas parciales al mar y una decoración que mezcla lo contemporáneo con los detalles artesanales de la zona. Ideal para parejas o familias pequeñas que buscan tranquilidad y mar.',
             en:'A modern, light-filled apartment a 5-minute walk from Puerta del Mar beach. With 2 bedrooms, a terrace with partial sea views and décor that blends contemporary style with local artisan details. Ideal for couples or small families looking for peace and sea.'},
       booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
+      video:{es:'https://martinzafra.github.io/ca/videos/rincon-es.mp4',en:'https://martinzafra.github.io/ca/videos/rincon-en.mp4',pl:'https://martinzafra.github.io/ca/videos/rincon-pl.mp4'},
       photos:['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80&auto=format','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format','https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format']},
     { name:{es:'Cortijo La Caleta',en:'Cortijo La Caleta'}, loc:{es:'Salobreña, Granada',en:'Salobreña, Granada'}, beds:5, guests:10,
       desc:{es:'Cortijo andaluz de 120 m² con piscina privada, jardín con limoneros y vistas a la roca de Salobreña y al Mediterráneo. Con 5 dormitorios y capacidad para 10 personas, es la elección perfecta para grupos grandes, reuniones familiares o escapadas especiales. Cada rincón respira la tradición de la Andalucía rural.',
             en:'A 120 m² Andalusian farmhouse with private pool, lemon tree garden and views of the Salobreña rock and the Mediterranean. With 5 bedrooms and capacity for 10 people, it is the perfect choice for large groups, family gatherings or special getaways. Every corner breathes the tradition of rural Andalusia.'},
       booking:'https://www.booking.com',airbnb:'https://www.airbnb.com',
+      video:{es:'https://martinzafra.github.io/ca/videos/cortijo-es.mp4',en:'https://martinzafra.github.io/ca/videos/cortijo-en.mp4',pl:'https://martinzafra.github.io/ca/videos/cortijo-pl.mp4'},
       photos:['https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80&auto=format','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=80&auto=format','https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&auto=format','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80&auto=format','https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&q=80&auto=format']}
   ];
 
@@ -815,6 +835,9 @@
     document.getElementById('caMd').scrollTop=0;
     document.getElementById('caMdBooking').href = a.booking;
     document.getElementById('caMdAirbnb').href = a.airbnb;
+    var vTxt = lang==='pl' ? 'Zobacz film o apartamencie' : lang==='en' ? 'Watch apartment video' : 'Ver vídeo del apartamento';
+    document.getElementById('caMdVideoBtnTxt').textContent = vTxt;
+    document.getElementById('caMdVideoBtn').dataset.videoSrc = a.video[lang] || a.video['es'];
   }
 
   function closeModal(){ mo.classList.remove('on'); document.body.style.overflow=''; }
@@ -877,7 +900,40 @@
     });
   });
 
+  /* ---- VIDEO PLAYER ---- */
+  var videoOverlay = document.getElementById('caVideoOverlay');
+  var videoPlayer  = document.getElementById('caVideoPlayer');
+  var videoSrc     = document.getElementById('caVideoSrc');
+  var videoClose   = document.getElementById('caVideoClose');
+
+  document.getElementById('caMdVideoBtn').addEventListener('click', function(){
+    var src = this.dataset.videoSrc;
+    if(!src) return;
+    videoSrc.src = src;
+    videoPlayer.load();
+    videoOverlay.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeVideo(){
+    videoOverlay.classList.remove('on');
+    videoPlayer.pause();
+    document.body.style.overflow = '';
+  }
+  videoClose.addEventListener('click', closeVideo);
+  videoOverlay.addEventListener('click', function(e){ if(e.target===videoOverlay) closeVideo(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && videoOverlay.classList.contains('on')) closeVideo(); });
+
 })();
 </script>
+<!-- VIDEO OVERLAY -->
+<div class="ca-md__video-overlay" id="caVideoOverlay">
+  <div class="ca-md__video-inner">
+    <button class="ca-md__video-close" id="caVideoClose" aria-label="Cerrar vídeo">&times;</button>
+    <video id="caVideoPlayer" controls playsinline>
+      <source id="caVideoSrc" src="" type="video/mp4"/>
+    </video>
+  </div>
+</div>
 </body>
 </html>
