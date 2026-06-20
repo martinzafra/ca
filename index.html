@@ -170,13 +170,14 @@
     .ca-md__hero::before{content:'';position:absolute;inset:0;background-image:inherit;background-size:cover;background-position:center;filter:blur(20px);opacity:0.5;z-index:0;transform:scale(1.1);}
     .ca-md__hero img{position:relative;z-index:1;}
     .ca-md__hero:hover img{transform:scale(1.03)}
-    .ca-md__nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;pointer-events:none}
-    .ca-md__nav button{pointer-events:all;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ca-ink);box-shadow:0 2px 12px rgba(0,0,0,.15);transition:var(--tr)}
+    .ca-md__nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 14px;pointer-events:none;z-index:3}
+    .ca-md__nav button{pointer-events:all;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.88);border:none;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;color:var(--ca-ink);box-shadow:0 2px 12px rgba(0,0,0,.15);transition:var(--tr)}
     .ca-md__nav button:hover{background:#fff;transform:scale(1.08)}
     .ca-md__cnt{position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,.5);color:#fff;font-size:15px;padding:4px 10px;border-radius:100px;font-weight:500}
-    .ca-md__thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-    .ca-md__thumbs::-webkit-scrollbar{display:none}
-    .ca-md__th{flex-shrink:0;width:72px;height:52px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .25s}
+    .ca-md__thumbs{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:4px;max-height:180px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--ca-sky) transparent;}
+    .ca-md__thumbs::-webkit-scrollbar{height:4px;width:4px;}
+    .ca-md__thumbs::-webkit-scrollbar-thumb{background:var(--ca-sky);border-radius:4px;}
+    .ca-md__th{flex-shrink:0;width:64px;height:46px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .25s}
     .ca-md__th.on{border-color:var(--ca-azure)}
     .ca-md__th img{width:100%;height:100%;object-fit:cover}
     .ca-md__body{padding:28px 28px 36px}
@@ -722,6 +723,13 @@
   </div>
 </footer>
 
+<!-- VIDEO OVERLAY -->
+<div class="ca-md__video-overlay" id="caVideoOverlay">
+  <div class="ca-md__video-inner">
+    <button class="ca-md__video-close" id="caVideoClose" aria-label="Cerrar vídeo">&times;</button>
+    <iframe id="caVideoPlayer" src="" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;aspect-ratio:16/9;display:block;"></iframe>
+  </div>
+</div>
 <script>
 (function(){
   'use strict';
@@ -925,12 +933,5 @@
 
 })();
 </script>
-<!-- VIDEO OVERLAY -->
-<div class="ca-md__video-overlay" id="caVideoOverlay">
-  <div class="ca-md__video-inner">
-    <button class="ca-md__video-close" id="caVideoClose" aria-label="Cerrar vídeo">&times;</button>
-    <iframe id="caVideoPlayer" src="" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;aspect-ratio:16/9;display:block;"></iframe>
-  </div>
-</div>
 </body>
 </html>
