@@ -40,7 +40,7 @@
     .ca-btn-wh:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
     .ca-btn-wa{background:#25D366;color:#fff;font-size:14px;padding:15px 32px}
     .ca-btn-wa:hover{background:#1db954;transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.35)}
-    .ca-rev{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+    .ca-rev{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.ca-rev.on{opacity:1;transform:translateY(0)}
     .ca-rev.on{opacity:1;transform:translateY(0)}
     .ca-rev.d1{transition-delay:.1s}.ca-rev.d2{transition-delay:.2s}
 
@@ -48,8 +48,8 @@
     .ca-nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:10px 0;transition:background .5s,padding .4s,box-shadow .4s}
     .ca-nav.sc{background:rgba(248,245,240,.97);backdrop-filter:blur(12px);padding:6px 0;box-shadow:0 2px 20px rgba(10,106,154,.09)}
     .ca-nav__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .ca-nav__logo{height:96px;width:auto;display:block;transition:opacity .4s;opacity:1;}
-    .ca-nav.sc .ca-nav__logo{opacity:1;height:72px;}
+    .ca-nav__logo{height:140px;width:auto;display:block;transition:opacity .4s,height .4s;opacity:1;}
+    .ca-nav.sc .ca-nav__logo{opacity:1;height:100px;}
     .ca-nav__links{display:flex;list-style:none;gap:32px}
     .ca-nav__links a{font-family:var(--ff-display);font-size:16px;font-weight:400;letter-spacing:.04em;color:rgba(255,255,255,.88);transition:color .3s}
     .ca-nav__links a:hover{color:var(--ca-sky)}
@@ -765,8 +765,23 @@
   var revs=document.querySelectorAll('.ca-rev');
   var ro=new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);} });
-  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:0,rootMargin:'0px 0px 0px 0px'});
   revs.forEach(function(el){ro.observe(el);});
+
+  // Fallback: show all sections after 1.5s in case IntersectionObserver fails
+  setTimeout(function(){
+    revs.forEach(function(el){ el.classList.add('on'); });
+  }, 1500);
+
+  // Also trigger on scroll as backup
+  window.addEventListener('scroll', function(){
+    revs.forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight){
+        el.classList.add('on');
+      }
+    });
+  }, {passive:true});
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){
