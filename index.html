@@ -197,7 +197,7 @@
     .ca-md__video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:600;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
     .ca-md__video-overlay.on{opacity:1;pointer-events:all}
     .ca-md__video-inner{position:relative;width:90vw;max-width:900px;}
-    .ca-md__video-inner video{width:100%;border-radius:12px;display:block;}
+    .ca-md__video-inner iframe{width:100%;aspect-ratio:16/9;border-radius:12px;display:block;}
     .ca-md__video-close{position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;padding:8px;line-height:1;}
     .ca-md__iconbtn{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:var(--tr);flex-shrink:0;border:none;cursor:pointer;overflow:hidden;padding:10px}
     .ca-md__iconbtn--booking{background:#003580;color:#fff}
@@ -732,7 +732,7 @@
       desc:{es:'Situado en el corazón de Marina del Este, en La Herradura, Barbarita es un apartamento de dos dormitorios y dos baños vestido con materiales naturales —madera, piedra, textiles cálidos— que transmiten una calma profunda desde el primer instante. Su amplia terraza con vistas abiertas al Mediterráneo y al puerto deportivo es el alma del espacio: el lugar donde tomar el primer café mientras el amanecer pinta el mar de dorado, y donde las noches se alargan sin querer entre la brisa y el murmullo del agua. Totalmente equipado, con la playa a tan solo 8 minutos a pie, piscina y fácil aparcamiento, todo está pensado para que tu única preocupación sea disfrutar.',
             en:'Located in the heart of Marina del Este, in La Herradura, Barbarita is a two-bedroom, two-bathroom apartment designed with natural materials—wood, stone, and warm textiles—that create a deep sense of calm from the very first moment. Its spacious terrace, with uninterrupted views of the Mediterranean and the marina, is the soul of the home: the perfect place to enjoy your first coffee as the sunrise bathes the sea in golden light, and where evenings effortlessly stretch on, accompanied by the sea breeze and the gentle sound of the water. Fully equipped, with the beach just an 8-minute walk away, a swimming pool, and easy parking, every detail has been thoughtfully considered so your only concern is simply enjoying your stay.'},
       booking:'https://www.booking.com/hotel/es/apartment-barbarita-marina-del-este.html?aid=356980&label=gog235jc-10CAsoRkIjYXBhcnRtZW50LWJhcmJhcml0YS1tYXJpbmEtZGVsLWVzdGVIUlgDaDOIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Asfc19EGwAIB0gIkMGY5Njc4NWMtN2Q2OS00MGJhLThiMTctZjljYTY0MTVjYmYz2AIB4AIB&sid=5b3abfd318ed9f891495e11c812046cd&dest_id=-387165&dest_type=city&group_adults=2&hapos=1&hpos=1&no_rooms=1&req_adults=2&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1781919309&srpvid=1ef90b24ee3e04d1&type=total&ucfs=1&lang=en-us&soz=1&lang_changed=1&logged_out=1',airbnb:'https://www.airbnb.com',
-      video:{es:'https://martinzafra.github.io/ca/images/AptBarbarita/videos/AptBarbaritaES-EN-PL.MP4',en:'https://martinzafra.github.io/ca/images/AptBarbarita/videos/AptBarbaritaES-EN-PL.MP4',pl:'https://martinzafra.github.io/ca/images/AptBarbarita/videos/AptBarbaritaES-EN-PL.MP4'},
+      video:{es:'https://www.youtube.com/embed/y8M6N814Qdg?rel=0&playsinline=1',en:'https://www.youtube.com/embed/y8M6N814Qdg?rel=0&playsinline=1',pl:'https://www.youtube.com/embed/y8M6N814Qdg?rel=0&playsinline=1'},
       photos:['https://martinzafra.github.io/ca/images/AptBarbarita/A.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/B.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/C.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/D.JPG','https://martinzafra.github.io/ca/images/AptBarbarita/E.JPG']},
     { name:{es:'Apartamento Sol Blanco',en:'Apartamento Sol Blanco'}, loc:{es:'Frigiliana, Málaga',en:'Frigiliana, Málaga'}, beds:2, guests:4,
       desc:{es:'En el corazón de Frigiliana, uno de los pueblos más bonitos de España, este apartamento de 2 dormitorios combina el encanto árabe de las calles empedradas con interiores modernos y luminosos. Desde su terraza se disfruta de unas vistas únicas sobre los tejados blancos del pueblo y la sierra al fondo.',
@@ -912,15 +912,14 @@
     if(!a || !a.video) return;
     var src = a.video[lang] || a.video['es'];
     if(!src) return;
-    videoSrc.setAttribute('src', src);
-    videoPlayer.load();
-    videoOverlay.classList.add('on');
+    document.getElementById('caVideoPlayer').src = src + '&autoplay=1';
+    document.getElementById('caVideoOverlay').classList.add('on');
     document.body.style.overflow = 'hidden';
   });
 
   function closeVideo(){
-    videoOverlay.classList.remove('on');
-    videoPlayer.pause();
+    document.getElementById('caVideoOverlay').classList.remove('on');
+    document.getElementById('caVideoPlayer').src = '';
     document.body.style.overflow = '';
   }
   videoClose.addEventListener('click', closeVideo);
@@ -933,9 +932,7 @@
 <div class="ca-md__video-overlay" id="caVideoOverlay">
   <div class="ca-md__video-inner">
     <button class="ca-md__video-close" id="caVideoClose" aria-label="Cerrar vídeo">&times;</button>
-    <video id="caVideoPlayer" controls playsinline>
-      <source id="caVideoSrc" src="" type="video/mp4"/>
-    </video>
+    <iframe id="caVideoPlayer" src="" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;aspect-ratio:16/9;display:block;"></iframe>
   </div>
 </div>
 </body>
