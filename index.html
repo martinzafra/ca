@@ -48,10 +48,10 @@
     .ca-nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 0;transition:background .5s,padding .4s,box-shadow .4s}
     .ca-nav.sc{background:rgba(248,245,240,.97);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 2px 20px rgba(10,106,154,.09)}
     .ca-nav__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .ca-nav__{display:flex;align-items:center;gap:10px;text-decoration:none;transition:color .4s}
-    .ca-nav__-img{height:52px;width:auto;display:block;object-fit:contain;flex-shrink:0}
-    .ca-nav__-txt{font-family:"Cormorant Garamond",Georgia,serif;font-size:35px;font-weight:600;font-style:normal;letter-spacing:0.06em;color:#fff;transition:color .4s}
-    .ca-nav.sc .ca-nav__{color:var(--ca-azure)}
+    .ca-nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .ca-nav__logo-img{height:42px;width:auto;display:block;object-fit:contain;flex-shrink:0;}
+    .ca-nav__logo-txt{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;letter-spacing:0.06em;color:rgba(255,255,255,.88);transition:color .4s;}
+    .ca-nav.sc .ca-nav__logo-txt{color:var(--ca-azure);}
     .ca-nav__links{display:flex;list-style:none;gap:32px}
     .ca-nav__links a{font-size:20px;font-weight:500;color:rgba(255,255,255,.88);transition:color .3s}
     .ca-nav__links a:hover{color:var(--ca-sky)}
@@ -359,7 +359,7 @@
 <nav class="ca-nav" id="caNv">
   <div class="ca-wrap">
     <div class="ca-nav__in">
-      <a href="#inicio" class="ca-nav__logo" style="display:flex;align-items:center;gap:10px;"><img src="https://martinzafra.github.io/ca//images/corp/CA-logo2.png" alt="Casa Amiga logo" style="height:42px;width:auto;"/><span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:600;letter-spacing:0.06em;">casa amiga</span></a>
+      <a href="#inicio" class="ca-nav__logo"><img src="https://martinzafra.github.io/ca//images/corp/CA-logo2.png" alt="Casa Amiga logo" class="ca-nav__logo-img"/><span class="ca-nav__logo-txt">casa amiga</span></a>
       <ul class="ca-nav__links">
         <li><a href="#nosotros" data-es="Nosotros" data-en="About Us">Nosotros</a></li>
         <li><a href="#apartamentos" data-es="Apartamentos" data-en="Properties">Apartamentos</a></li>
