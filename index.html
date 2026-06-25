@@ -935,7 +935,8 @@
     galBtnTxt.textContent=galLabels[lang]?galLabels[lang][galOpen?1:0]:galLabels.es[galOpen?1:0];
     galBtnIco.style.transform=galOpen?'rotate(180deg)':'rotate(0deg)';
     if(!galOpen){ setTimeout(function(){ document.getElementById('galeria').scrollIntoView({behavior:'smooth'}); },100); }
-  }); }, lbImg=document.getElementById('caLbImg'), lbx=document.getElementById('caLbX');
+  }); }
+  var lb=document.getElementById('caLb'), lbImg=document.getElementById('caLbImg'), lbx=document.getElementById('caLbX');
   var lbPrev=document.getElementById('caLbPrev'), lbNext=document.getElementById('caLbNext');
   var galItems=[], lbCur=0;
   document.querySelectorAll('.ca-gal__i').forEach(function(item,idx){
